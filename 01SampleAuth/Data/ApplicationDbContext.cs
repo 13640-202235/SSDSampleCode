@@ -12,5 +12,7 @@ namespace _01SampleAuth.Data
         }
 
         //Database Tables
+        public DbSet<Car> Cars { get; set; }
+
     }
 }
