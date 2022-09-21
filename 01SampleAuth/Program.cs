@@ -1,5 +1,7 @@
 using _01SampleAuth.Data;
+using _01SampleAuth.Helpers;
 using _01SampleAuth.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -17,14 +19,37 @@ namespace _01SampleAuth
                 options.UseSqlServer(connectionString));
             builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 
-            builder.Services.AddIdentity<ApplicationUser,IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
+            builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options => options.SignIn.RequireConfirmedAccount = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders()
                 .AddDefaultUI();
+
+            builder.Services.AddAuthorization(options =>
+            {
+                options.AddPolicy("MohawkAdmin", policy =>
+                {
+                    policy.RequireRole("Admin");
+                    //policy.RequireClaim(ClaimTypes.Email, “support@mohawkcollege.ca");
+                    policy.Requirements.Add(new EmailDomainRequirement("mohawkcollege.ca"));
+                });
+            });
+            builder.Services.AddSingleton<IAuthorizationHandler, EmailDomainHandler>();
+
             builder.Services.AddControllersWithViews();
 
             var app = builder.Build();
 
+            //Initialize app secrets
+            var configuration = app.Services.GetService<IConfiguration>();
+            var hosting = app.Services.GetService<IWebHostEnvironment>();
+
+            if (hosting.IsDevelopment())
+            {
+                var secrets = configuration.GetSection("Secrets").Get<AppSecrets>();
+                DbInitializer.appSecrets = secrets;
+            }
+
+            //Seed User Data
             using (var scope = app.Services.CreateScope())
             {
                 DbInitializer.SeedUsersAndRoles(scope.ServiceProvider).Wait();
