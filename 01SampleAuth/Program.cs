@@ -24,12 +24,18 @@ namespace _01SampleAuth
                 .AddDefaultTokenProviders()
                 .AddDefaultUI();
 
+            builder.Services.AddAuthentication().AddFacebook(facebookOptions =>
+            {
+                facebookOptions.AppId = builder.Configuration["Authentication:Facebook:AppId"];
+                facebookOptions.AppSecret = builder.Configuration["Authentication:Facebook:AppSecret"];
+            });
+
             builder.Services.AddAuthorization(options =>
             {
                 options.AddPolicy("MohawkAdmin", policy =>
                 {
                     policy.RequireRole("Admin");
-                    //policy.RequireClaim(ClaimTypes.Email, “support@mohawkcollege.ca");
+                    //policy.RequireClaim(ClaimTypes.Email, â€œsupport@mohawkcollege.ca");
                     policy.Requirements.Add(new EmailDomainRequirement("mohawkcollege.ca"));
                 });
             });
