@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using CommonAttacks.Models;
 
 namespace CommonAttacks.Data
 {
@@ -9,5 +10,6 @@ namespace CommonAttacks.Data
             : base(options)
         {
         }
+        public DbSet<CommonAttacks.Models.Car> Car { get; set; }
     }
 }
