@@ -5,7 +5,9 @@ VisualStudioVersion = 17.1.32319.34
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "01SampleAuth", "01SampleAuth\01SampleAuth.csproj", "{BC82A9B1-AC69-48AA-B3F5-D1C7AB2D754B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CommonAttacks", "CommonAttacks\CommonAttacks.csproj", "{3480359B-9D3F-49DB-96E3-12ABFAD6A80F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "CommonAttacks", "CommonAttacks\CommonAttacks.csproj", "{3480359B-9D3F-49DB-96E3-12ABFAD6A80F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ProactiveControls", "ProactiveControls\ProactiveControls.csproj", "{1381B25C-F4DE-46BF-BF69-D8A945DD3A6E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{3480359B-9D3F-49DB-96E3-12ABFAD6A80F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3480359B-9D3F-49DB-96E3-12ABFAD6A80F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3480359B-9D3F-49DB-96E3-12ABFAD6A80F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1381B25C-F4DE-46BF-BF69-D8A945DD3A6E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1381B25C-F4DE-46BF-BF69-D8A945DD3A6E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1381B25C-F4DE-46BF-BF69-D8A945DD3A6E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1381B25C-F4DE-46BF-BF69-D8A945DD3A6E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
