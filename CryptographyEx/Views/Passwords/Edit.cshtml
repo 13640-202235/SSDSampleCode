@@ -1,0 +1,59 @@
+﻿@model CryptographyEx.Models.Password
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Password</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="UserId" class="control-label"></label>
+                <input asp-for="UserId" class="form-control" />
+                <span asp-validation-for="UserId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="PlainTextPassword" class="control-label"></label>
+                <input asp-for="PlainTextPassword" class="form-control" />
+                <span asp-validation-for="PlainTextPassword" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HashedPassword" class="control-label"></label>
+                <input asp-for="HashedPassword" class="form-control" />
+                <span asp-validation-for="HashedPassword" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Salt" class="control-label"></label>
+                <input asp-for="Salt" class="form-control" />
+                <span asp-validation-for="Salt" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="HashedSaltedPassword" class="control-label"></label>
+                <input asp-for="HashedSaltedPassword" class="form-control" />
+                <span asp-validation-for="HashedSaltedPassword" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="BcryptPassword" class="control-label"></label>
+                <input asp-for="BcryptPassword" class="form-control" />
+                <span asp-validation-for="BcryptPassword" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
