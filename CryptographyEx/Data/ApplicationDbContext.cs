@@ -13,6 +13,7 @@ namespace CryptographyEx.Data
 
         public DbSet<Password> Passwords { get; set; }
         public DbSet<BankAccount> BankAccounts { get; set; }
+        public DbSet<CryptographyEx.Models.BankAccountDp> BankAccountDp { get; set; }
 
     }
 }
